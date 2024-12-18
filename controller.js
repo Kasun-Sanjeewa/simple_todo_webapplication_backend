@@ -1,5 +1,17 @@
 const Tasks = require('./model');
+//getTask
+const getTask = (req, res, next) => {
+    Tasks.find()
+        .then(response => {
+            res.json({ response })
+        })
 
+        .catch(error => {
+            res.json({ error })
+        })
+}
+
+//addTask
 const addTask = (req, res, next) => {
     const user = new Tasks({
         task: req.body.task,
@@ -20,4 +32,32 @@ const addTask = (req, res, next) => {
 }
 
 
+//updateTask
+
+const updateTask = (req, res, next) => {
+    const { _id, task, date, time, catogory, priority } = req.body;
+
+    Tasks.updateMany(
+        { _id: _id },
+        {
+            $set: {
+                task: task,
+                date: date,
+                time: time,
+                catogory: catogory,
+                priority: priority
+            }
+        }
+    )
+        .then(response => {
+            res.json({ response });
+        })
+        .catch(error => {
+            res.json({ error });
+        });
+};
+
+
 exports.addTask = addTask;
+exports.getTask = getTask;
+exports.updateTask = updateTask;

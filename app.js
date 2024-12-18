@@ -14,10 +14,23 @@ app.use(
 );
 
 
+app.get('/getTask', (req, res) => {
+    controller.getTask((req, res, next) => {
+        res.send();
+    });
+});
+
 
 app.post('/addTask', (req, res) => {
     controller.addTask(req.body, (callback) => {
         res.send();
+    });
+});
+
+
+app.put('/updateTask', (req, res) => {
+    controller.updateTask(req.body, (callback) => {
+        res.send(callback);
     });
 });
 
