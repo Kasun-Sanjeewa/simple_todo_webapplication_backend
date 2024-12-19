@@ -58,6 +58,20 @@ const updateTask = (req, res, next) => {
 };
 
 
+//Delete Task
+const deleteTask = (req, res, next) => {
+    const _id = req.body._id;
+    Tasks.deleteOne({ _id: _id })
+        .then(response => {
+            res.json({ response })
+        })
+
+        .catch(error => {
+            res.json({ error })
+        })
+}
+
 exports.addTask = addTask;
 exports.getTask = getTask;
 exports.updateTask = updateTask;
+exports.deleteTask = deleteTask;

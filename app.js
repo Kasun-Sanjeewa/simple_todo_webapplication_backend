@@ -35,6 +35,13 @@ app.put('/updateTask', (req, res) => {
 });
 
 
+app.delete('/deleteTask', (req, res) => {
+    controller.deleteTask(req.body, (callback) => {
+        res.send(callback);
+    });
+});
+
+
 
 app.use(express.json());
 
