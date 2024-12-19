@@ -59,17 +59,31 @@ const updateTask = (req, res, next) => {
 
 
 //Delete Task
-const deleteTask = (req, res, next) => {
-    const _id = req.body._id;
-    Tasks.deleteOne({ _id: _id })
-        .then(response => {
-            res.json({ response })
-        })
+// const deleteTask = (req, res, next) => {
+//     const _id = req.body._id;
+//     Tasks.deleteOne({ _id: _id })
+//         .then(response => {
+//             res.json({ response })
+//         })
 
-        .catch(error => {
-            res.json({ error })
+//         .catch(error => {
+//             res.json({ error })
+//         })
+// }
+
+
+// Delete Task
+const deleteTask = (req, res, next) => {
+    const _id = req.query._id; // Use `req.query` to access query parameters
+    Tasks.deleteOne({ _id: _id })
+        .then((response) => {
+            res.json({ response });
         })
-}
+        .catch((error) => {
+            res.json({ error });
+        });
+};
+
 
 exports.addTask = addTask;
 exports.getTask = getTask;
