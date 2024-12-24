@@ -9,7 +9,7 @@ const router = require('./router');
 app.use(cors());
 app.use(express.json()); //For convert json format
 
-const uri = 'mongodb+srv://techict3865:Kasun12345@cluster1.1dwwu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1';
+const uri = 'uri';
 
 
 const connection = async () => {
